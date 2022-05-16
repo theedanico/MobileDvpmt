@@ -1,10 +1,13 @@
-
 import React, {useState }from 'react';
-import { StyleSheet, Text, View , Image, SafeAreaView, SliderBase} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { StyleSheet, Text, View , Image, SafeAreaView, SliderBase, TouchableOpacity} from 'react-native';
+
 
 function SecondScreen({navigation}) {
+    const [shouldShow, setshouldShow] = useState(true);
+
     return (
+        <SafeAreaView style={{flex: 1}}>
+
         <View style={styles.container}>
             <View style={styles.header}>
                 <Image style={styles.avatar_image} source={require("../assets/profile.png")}/>
@@ -13,10 +16,20 @@ function SecondScreen({navigation}) {
                 <Image style={styles.dots_image} source={require("../assets/dots.png")}/>
             </View>
             <View style={styles.your}>
-                <Image style={styles.updated_image} source={require("../assets/updated.png")}/> 
-                <Image style={styles.close_image} source={require("../assets/close.png")}/>
-                <Text style={styles.your_TEXT}>We updated your scooter</Text>
-                <Text style={styles.your_text}>Everything your scooter needed we did it for you. </Text>
+                {
+                    shouldShow ? (
+                        <View>
+                            <Image style={styles.updated_image} source={require("../assets/updated.png")}/> 
+                            
+                            <Text style={styles.your_TEXT}>We updated your scooter</Text>
+                            <Text style={styles.your_text}>Everything your scooter needed we did it for you. </Text>
+                        </View>
+                    ): null
+                }
+                
+                <TouchableOpacity onPress={() => setshouldShow(!shouldShow)}>
+                    <Image  style={styles.close_image} source={require("../assets/close.png")}/>
+                </TouchableOpacity>
             </View>
             <View style={styles.location}>
                 <Text style={styles.location_TEXT}>Daniel's Scooter</Text>
@@ -52,6 +65,9 @@ function SecondScreen({navigation}) {
             </View>
 
         </View>
+        </SafeAreaView>
+        
+        
     );
 }
   
@@ -60,13 +76,17 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      top: 20
+      
     },
     header:{
-        top:70,
+        top:60,
     },
     your:{
         top:60,
+        padding: 10
+        
     },
     avatar_image:{
         top: 50,
@@ -76,12 +96,15 @@ const styles = StyleSheet.create({
         fontSize: 17,
         left:-50,
         top: 10,
+        color: 'black',
+        fontWeight: 'bold'
     },
     app_text:{
         fontSize: 14,
-        color:'#d3d3d3',
+        color:'black',
         left:-50,
         top: 10,
+        
     },
     dots_image:{
         right: -200,
@@ -92,7 +115,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     close_image:{
-        top: -230,
+        top: -290,
         right: -290,
     },
     your_TEXT:{
@@ -112,35 +135,37 @@ const styles = StyleSheet.create({
     },
     location:{
         width:300,
-        height:100,
+        height:80,
         backgroundColor:'#FFA500',
         borderRadius: 20,
+        top: 0
         
     },
     location_TEXT:{
         fontSize: 17,
         color:'#fff',
-        top:25,
+        top:15,
         left:20,
 
     },
     location_text:{
         fontSize: 14,
         color:'#fff',
-        top: 30,
+        top: 20,
         left:20,
     },
     maps_image:{
-        top: -18,
+        top: -25,
         left:230,
     },
     info:{
         width:300,
-        top:30,
+        top:18,
+        
     },
     distance:{
         width: 140,
-        height:100,
+        height:80,
         borderColor:'#acacac',
         borderStyle: "solid",
         borderWidth: 1,
@@ -148,47 +173,47 @@ const styles = StyleSheet.create({
     },
     battery:{
         width: 140,
-        height:100,
+        height:80,
         borderColor:'#acacac',
         borderStyle: "solid",
         borderWidth: 1,
         borderRadius: 15,
         left:160,
-        top:-100,
+        top:-80,
     },
     Speed:{
         width: 140,
-        height:100,
+        height:80,
         borderColor:'#acacac',
         borderStyle: "solid",
         borderWidth: 1,
         borderRadius: 15,
-        top: -80,
+        top: -70,
     },
     Updated:{
         width: 140,
-        height:100,
+        height:80,
         borderColor:'#acacac',
         borderStyle: "solid",
         borderWidth: 1,
         borderRadius: 15,
         left:160,
-        top:-180,
+        top:-150,
     }, 
     info_image:{
-        top: 25,
+        top: 10,
         left:10,
 
     },
     info_TEXT:{
-        top: 15,
+        top: 10,
         left:10,
         fontSize:14,
         color:'#55418E',
 
     },
     info_text:{
-        top: 30,
+        top: 12,
         left:10,
         fontSize:14,
         color:'#FFA500',

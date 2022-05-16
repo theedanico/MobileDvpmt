@@ -1,12 +1,14 @@
-
 import React from 'react';
-import { StyleSheet, Text, View , Image} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { StyleSheet, Text, View , Image, TouchableOpacity, SafeAreaView, StatusBar, Platform } from 'react-native';
+
+
 
 
 function FirstScreen({navigation}) {
   return (
+    <SafeAreaView style={{ flex: 1}}>
     <View style={styles.container}>
+    <StatusBar hidden />
        <View style={styles.logo}>
        <Image source={require("../assets/logo.png")}/>
       </View>
@@ -25,6 +27,7 @@ function FirstScreen({navigation}) {
         </TouchableOpacity>
       </View>
     </View>
+    </SafeAreaView>
   );
 }
 
@@ -34,7 +37,8 @@ function FirstScreen({navigation}) {
     backgroundColor:'#55418E',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
   },
 logo:{
     top: -50,

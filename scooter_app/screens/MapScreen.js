@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState }  from "react";
 import { Dimensions, StyleSheet, Text, View , Image,} from 'react-native';
 import MapView from 'react-native-maps';
@@ -61,9 +60,10 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
+      top: 20
     },
     header:{
-        top:-40,
+        top:-50,
     },
     avatar_image:{
         top: 50,
@@ -73,10 +73,11 @@ const styles = StyleSheet.create({
         fontSize: 17,
         left:-50,
         top: 10,
+        fontWeight: 'bold'
     },
     app_text:{
         fontSize: 14,
-        color:'#d3d3d3',
+        color:'black',
         left:-50,
         top: 10,
     },
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     body:{
         top: -25,
         width:330,
-        height:630,
+        height:550,
         borderColor:'#acacac',
         borderStyle: "solid",
         borderWidth: 1,
